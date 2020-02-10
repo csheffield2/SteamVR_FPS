@@ -6,6 +6,7 @@ using Valve.VR.InteractionSystem;
 
 public class Gun : MonoBehaviour
 {
+
     public SteamVR_Action_Boolean fireAction;
     public GameObject bullet;
     public Transform barrelPivot;
@@ -43,5 +44,17 @@ public class Gun : MonoBehaviour
         Rigidbody bulletrb = Instantiate(bullet, barrelPivot.position, barrelPivot.rotation).GetComponent<Rigidbody>();
         bulletrb.velocity = barrelPivot.forward * shootingSpeed;
         muzzleFlash.SetActive(true);
+        animator.SetBool("Fire", true);
+       // yield return new WaitForSeconds(1);
+        //animator.SetBool("Fire", false);
     }
+    /*
+
+    void FixedUpdate()
+    {
+        AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
+
+        if (info.IsName("Fire")) animator.SetBool("Fire", false);
+    }
+    */
 }
