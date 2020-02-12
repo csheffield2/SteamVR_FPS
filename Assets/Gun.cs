@@ -12,7 +12,7 @@ public class Gun : MonoBehaviour
     public Transform barrelPivot;
     public float shootingSpeed = 1;
     public GameObject muzzleFlash;
-
+    
     private Animator animator;
     private Interactable interactable;
 
@@ -45,8 +45,18 @@ public class Gun : MonoBehaviour
         bulletrb.velocity = barrelPivot.forward * shootingSpeed;
         muzzleFlash.SetActive(true);
         animator.SetBool("Fire", true);
+        animator.Play();
        // yield return new WaitForSeconds(1);
-        //animator.SetBool("Fire", false);
+        animator.SetBool("Fire", false);
+    }
+
+
+
+    void Cocking()
+    {
+        Debug.Log("Cocked");
+        animator.SetBool("Cocked", true);
+        animator.Play();
     }
     /*
 
